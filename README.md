@@ -12,8 +12,6 @@ Mindspace is an alternative.
 
 Create a customizable digital home for your thoughts, ideas, photos, videos, essays, and creative work.
 
-No followers.
-
 No algorithms.
 
 No pressure to perform.
