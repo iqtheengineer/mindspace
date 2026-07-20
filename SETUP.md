@@ -815,3 +815,11 @@ No hosting bill.
 Just your own corner of the internet.
 
 Welcome to Mindspace.
+
+## ⭐ Like the idea?
+
+If Mindspace resonates with you, please give this repository a star.
+
+Every star helps more people discover a simpler way to build their own corner of the internet.
+
+Thank you for supporting the project.
