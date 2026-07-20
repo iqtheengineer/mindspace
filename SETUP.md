@@ -51,13 +51,13 @@ https://yourusername.github.io/your-repository-name/
 
 At the top of the Mindspace repository, click:
 
-**Use this template**
+**Fork**
 
 Then click:
 
-**Create a new repository**
+**Create fork**
 
-Give your repository a name.
+Choose a name for your repository.
 
 Examples:
 
@@ -69,15 +69,17 @@ my-mindspace
 the-archive
 ```
 
-Choose:
+Make sure:
 
 ```text
 Public
 ```
 
+is selected.
+
 Then click:
 
-**Create repository**
+**Create fork**
 
 You now have your own copy of Mindspace.
 
