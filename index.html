@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="A customizable personal space for thoughts, ideas, photos, and creative work."
+  >
+
+  <title>Mindspace</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="home-page">
+
+  <main>
+    <section class="hero" id="home">
+
+      <video
+        class="hero-video"
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source id="heroVideoSource" src="hero.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <header class="site-header">
+        <a
+          class="site-brand"
+          href="index.html"
+          id="headerTitle"
+          aria-label="Return to homepage"
+        >
+          My Mindspace
+        </a>
+
+        <button
+          class="sound-button"
+          id="soundButton"
+          type="button"
+          aria-label="Turn sound on"
+          aria-pressed="false"
+        >
+          <span class="sound-icon" aria-hidden="true">◉</span>
+          <span id="soundButtonText">Sound on</span>
+        </button>
+      </header>
+
+      <div class="hero-content">
+
+        <p class="hero-kicker">
+          Your corner of the internet
+        </p>
+
+        <h1 class="hero-title" id="siteTitle">
+          My Mindspace
+        </h1>
+
+        <p class="hero-tagline" id="siteTagline">
+          A public archive of private thinking.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="thoughts.html">
+            Enter the archive
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <p class="hero-statement" id="siteStatement">
+          This is not advice. It's evidence of thinking.
+        </p>
+
+      </div>
+
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Enter</span>
+        <span class="scroll-line"></span>
+      </div>
+
+    </section>
+  </main>
+
+  <noscript>
+    <div class="noscript-message">
+      This website needs JavaScript enabled to load its custom content.
+    </div>
+  </noscript>
+
+  <script src="config.js"></script>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const fallbackSite = {
+        title: "My Mindspace",
+        tagline: "A public archive of private thinking.",
+        statement: "This is not advice. It's evidence of thinking.",
+        author: "@yourname",
+        heroVideo: "hero.mp4",
+        theme: {
+          background: "#080808",
+          text: "#F5F2EA",
+          accent: "#D6FF2F",
+          muted: "#9A9A9A"
+        }
+      };
+
+      const site =
+        typeof SITE !== "undefined"
+          ? { ...fallbackSite, ...SITE }
+          : fallbackSite;
+
+      const theme = {
+        ...fallbackSite.theme,
+        ...(site.theme || {})
+      };
+
+      document.documentElement.style.setProperty(
+        "--background",
+        theme.background
+      );
+
+      document.documentElement.style.setProperty(
+        "--text",
+        theme.text
+      );
+
+      document.documentElement.style.setProperty(
+        "--accent",
+        theme.accent
+      );
+
+      document.documentElement.style.setProperty(
+        "--muted",
+        theme.muted
+      );
+
+      document.title = site.title || "Mindspace";
+
+      const title = document.getElementById("siteTitle");
+      const headerTitle = document.getElementById("headerTitle");
+      const tagline = document.getElementById("siteTagline");
+      const statement = document.getElementById("siteStatement");
+
+      title.textContent = site.title;
+      headerTitle.textContent = site.title;
+      tagline.textContent = site.tagline;
+      statement.textContent = site.statement;
+
+      const video = document.getElementById("heroVideo");
+      const videoSource = document.getElementById("heroVideoSource");
+      const videoPath = site.heroVideo || "hero.mp4";
+
+      if (videoSource.getAttribute("src") !== videoPath) {
+        videoSource.setAttribute("src", videoPath);
+        video.load();
+      }
+
+      const soundButton = document.getElementById("soundButton");
+      const soundButtonText =
+        document.getElementById("soundButtonText");
+
+      function updateSoundButton() {
+        const isMuted = video.muted;
+
+        soundButtonText.textContent =
+          isMuted ? "Sound on" : "Sound off";
+
+        soundButton.setAttribute(
+          "aria-label",
+          isMuted ? "Turn sound on" : "Turn sound off"
+        );
+
+        soundButton.setAttribute(
+          "aria-pressed",
+          String(!isMuted)
+        );
+
+        soundButton.classList.toggle(
+          "sound-active",
+          !isMuted
+        );
+      }
+
+      async function toggleSound() {
+        try {
+          video.muted = !video.muted;
+
+          if (video.paused) {
+            await video.play();
+          }
+
+          updateSoundButton();
+        } catch (error) {
+          console.error("Unable to control video sound:", error);
+        }
+      }
+
+      soundButton.addEventListener("click", toggleSound);
+
+      video.addEventListener("volumechange", updateSoundButton);
+
+      video.play().catch(() => {
+        /*
+          Some browsers may delay autoplay. The video will begin
+          after the visitor interacts with the page.
+        */
+      });
+
+      updateSoundButton();
+    })();
+  </script>
+
+</body>
+</html>
