@@ -55,7 +55,7 @@ At the top of the Mindspace repository, click:
 
 Then click:
 
-**Create fork**
+**Create new fork**
 
 Choose a name for your repository.
 
