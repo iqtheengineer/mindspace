@@ -22,19 +22,30 @@ Just your space.
 
 ---
 
-## What is Mindspace?
+# See a Live Example
 
-Mindspace is a free template that helps you create your own personal website using GitHub Pages.
+Want to see what a finished Mindspace looks like?
+
+👉 https://iqtheengineer.github.io/intellectually-questionable/
+
+This site was built using the same approach you'll use to create your own.
+
+---
+
+# What Is Mindspace?
+
+Mindspace is a free website template that helps you create your own personal corner of the internet using GitHub Pages.
 
 Think:
 
 - MySpace
 - Tumblr
+- Xanga
+- LiveJournal
 - Digital Gardens
 - Personal Blogs
-- Online Journals
 
-But simpler.
+But updated for today.
 
 Your page can be whatever you want it to be:
 
@@ -50,95 +61,102 @@ There are no rules.
 
 ---
 
-## What Can I Customize?
+# Create Your Own Mindspace (15 Minutes)
 
-Every Mindspace is unique.
+No coding experience required.
 
-Customize:
-
-- Your homepage title
-- Hero video or image
-- Colors
-- Typography
-- Thoughts and quotes
-- Photos and videos
-- Navigation labels
-- Layout and structure
-- Personal bio
-- External links
-
-Make it feel like you.
+If you can upload photos to Facebook, you can build a Mindspace.
 
 ---
 
-## Examples
+## Step 1: Create a Free GitHub Account
 
-### The Thinker
+Go to:
 
-A collection of thoughts, observations, and essays.
-
-### The Traveler
-
-Photos, videos, journals, and memories.
-
-### The Creative
-
-Projects, experiments, inspiration, and ideas.
-
-### The Archivist
-
-A public collection of things worth remembering.
-
-### The Chaos Page
-
-A completely unhinged internet masterpiece.
-
----
-
-# Getting Started
-
-## 1. Create Your Own Copy
+https://github.com
 
 Click:
 
-**Use this template**
+**Sign Up**
 
-at the top of this repository.
+Choose a username and create your account.
 
-Create your own repository.
-
-Example:
-
-```text
-janes-mindspace
-```
+Think of GitHub as the place where your website files live.
 
 ---
 
-## 2. Replace the Hero Video
+## Step 2: Create Your Own Copy of Mindspace
 
-Locate:
+At the top of this page click:
+
+**Use this template**
+
+Then click:
+
+**Create a new repository**
+
+Name it something personal.
+
+Examples:
+
+```text
+johns-space
+field-notes
+late-night-thoughts
+my-digital-garden
+```
+
+Click:
+
+**Create repository**
+
+You now have your own copy.
+
+---
+
+## Step 3: Replace The Homepage Video
+
+Open:
 
 ```text
 hero.mp4
+```
+
+Click:
+
+**Delete file**
+
+Commit the change.
+
+Now click:
+
+```text
+Add File
+→ Upload Files
 ```
 
 Upload your own video.
 
 Ideas:
 
-- Travel footage
-- City lights
+- Travel clips
 - Camera roll memories
+- Ocean footage
+- City lights
+- Coffee shop scenes
 - Creative projects
-- Nature clips
-- Personal moments
 
 Keep it under 30 seconds if possible.
 
+Name it:
+
+```text
+hero.mp4
+```
+
 ---
 
-## 3. Customize Your Homepage
+## Step 4: Customize Your Homepage
 
 Open:
 
@@ -146,74 +164,91 @@ Open:
 index.html
 ```
 
-Replace the title and description with your own.
+Click the pencil icon.
 
-Example:
+Look for:
 
 ```text
-LATE NIGHT THOUGHTS
-
-A public archive of private thinking.
+INTELLECTUALLY QUESTIONABLE
 ```
 
-Or:
+Replace it with your own title.
+
+Examples:
 
 ```text
 FIELD NOTES
-
-Things I don't want to forget.
 ```
-
-Or:
 
 ```text
-SCRAPBOOK
-
-Fragments of a life in progress.
+LATE NIGHT THOUGHTS
 ```
+
+```text
+LIFE IN PROGRESS
+```
+
+```text
+THE ARCHIVE
+```
+
+Click:
+
+**Commit Changes**
+
+Save.
 
 ---
 
-## 4. Add Your Content
+## Step 5: Add Your Thoughts
 
 Open:
 
 ```text
 thoughts.html
-quotes.html
-brain-dumps.html
 ```
 
-Replace the sample content with your own.
+Replace the sample thoughts with your own.
 
-Add:
+Examples:
 
-- Thoughts
-- Quotes
-- Journal entries
-- Ideas
-- Observations
-- Photos
-- Links
+```text
+Most people are not afraid of failure.
+They are afraid of failing publicly.
+```
 
-Whatever matters to you.
+```text
+The internet rewards certainty.
+Intelligence often begins with doubt.
+```
+
+Add as many as you'd like.
+
+Save your changes.
 
 ---
 
-## 5. Publish Your Site
+# Publish Your Website
 
-Go to:
+This is the magic step.
 
-```text
-Settings
-→ Pages
-```
+---
 
-Under:
+## Step 6: Turn On GitHub Pages
 
-```text
-Build and deployment
-```
+Open your repository.
+
+Click:
+
+**Settings**
+
+Then:
+
+**Pages**
+
+In the Pages settings:
+
+### Source
 
 Choose:
 
@@ -221,60 +256,148 @@ Choose:
 Deploy from a branch
 ```
 
-Then select:
+### Branch
+
+Choose:
 
 ```text
-Branch: main
-Folder: /(root)
+main
 ```
+
+### Folder
+
+Choose:
+
+```text
+/ (root)
+```
+
+Click:
+
+**Save**
+
+---
+
+## Step 7: Wait 1–2 Minutes
+
+GitHub needs a moment to build your website.
+
+Grab a coffee.
+
+Refresh the page.
+
+---
+
+## Step 8: Find Your Website
+
+Return to:
+
+```text
+Settings
+→ Pages
+```
+
+You'll see something like:
+
+```text
+Your site is live at:
+
+https://yourusername.github.io/your-repository-name/
+```
+
+That's your website.
+
+Share it.
+
+Bookmark it.
+
+Make it yours.
+
+---
+
+# Updating Your Site Later
+
+Want to add a thought?
+
+Open:
+
+```text
+thoughts.html
+```
+
+Edit.
 
 Save.
 
-GitHub will publish your site automatically.
+Commit.
+
+GitHub automatically updates your website.
+
+No servers.
+
+No hosting bills.
+
+No complicated setup.
 
 ---
 
-## 6. Share Your Space
+# What Can I Customize?
 
-Your website will be available at:
+Every Mindspace is unique.
 
-```text
-https://yourusername.github.io/repository-name/
-```
+Customize:
 
-Example:
+- Homepage title
+- Hero video
+- Colors
+- Typography
+- Thoughts and quotes
+- Photos and videos
+- Navigation labels
+- Personal bio
+- External links
 
-```text
-https://jane.github.io/janes-mindspace/
-```
-
-Send it to friends.
-
-Post it online.
-
-Or keep it just for yourself.
+Make it feel like you.
 
 ---
 
-# Philosophy
+# Why Mindspace Exists
 
-Most platforms ask:
+Social media asks:
 
-> What do you want to post?
+> What do you want to post today?
 
 Mindspace asks:
 
 > What do you want to build?
 
-Social media turns everyone into a profile.
+This isn't a profile.
 
-Mindspace gives you a place.
+This isn't a feed.
 
-A place for unfinished thoughts.
+This isn't an algorithm.
 
-A place for weird ideas.
+It's your own corner of the internet.
 
-A place for things that don't fit inside a feed.
+The way it used to be.
+
+Before everything became content.
+
+---
+
+# Philosophy
+
+Most social platforms make everyone look the same.
+
+Mindspace exists because your ideas deserve a home that looks like you.
+
+A place for:
+
+- Unfinished thoughts
+- Weird ideas
+- Personal projects
+- Photos worth remembering
+- Things that don't fit inside a feed
 
 A place that belongs to you.
 
@@ -302,7 +425,7 @@ Just a website.
 
 # Roadmap
 
-Future templates may include:
+Future Mindspace templates may include:
 
 - Digital Garden
 - Journal
@@ -326,3 +449,10 @@ It needs more places.
 Create yours.
 
 Welcome to Mindspace.
+
+---
+
+Built by @iqtheengineer
+
+Live Example:
+https://iqtheengineer.github.io/intellectually-questionable/
