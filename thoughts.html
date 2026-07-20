@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="A personal archive of thoughts, quotes, and unfinished ideas."
+  >
+
+  <title>Archive | Mindspace</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="thoughts-page">
+
+  <header class="archive-header">
+
+    <a
+      class="archive-home-link"
+      href="index.html"
+      id="archiveBrand"
+      aria-label="Return to homepage and hero video"
+    >
+      My Mindspace
+    </a>
+
+    <div class="archive-position" aria-live="polite">
+      <span id="currentThoughtNumber">01</span>
+      <span class="position-divider">/</span>
+      <span id="totalThoughtNumber">01</span>
+    </div>
+
+  </header>
+
+  <main
+    class="thoughts-container"
+    id="thoughtsContainer"
+    aria-label="Thought archive"
+  ></main>
+
+  <nav
+    class="progress-navigation"
+    id="progressNavigation"
+    aria-label="Thought navigation"
+  ></nav>
+
+  <noscript>
+    <div class="noscript-message">
+      This archive needs JavaScript enabled to display its content.
+    </div>
+  </noscript>
+
+  <script src="config.js"></script>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const fallbackSite = {
+        title: "My Mindspace",
+        tagline: "A public archive of private thinking.",
+        statement: "This is not advice. It's evidence of thinking.",
+        author: "@yourname",
+        theme: {
+          background: "#080808",
+          text: "#F5F2EA",
+          accent: "#D6FF2F",
+          muted: "#9A9A9A"
+        },
+        thoughts: [
+          {
+            type: "thought",
+            date: "",
+            text: "Replace this thought with your own."
+          }
+        ]
+      };
+
+      const site =
+        typeof SITE !== "undefined"
+          ? { ...fallbackSite, ...SITE }
+          : fallbackSite;
+
+      const theme = {
+        ...fallbackSite.theme,
+        ...(site.theme || {})
+      };
+
+      const thoughts =
+        Array.isArray(site.thoughts) && site.thoughts.length
+          ? site.thoughts
+          : fallbackSite.thoughts;
+
+      document.documentElement.style.setProperty(
+        "--background",
+        theme.background
+      );
+
+      document.documentElement.style.setProperty(
+        "--text",
+        theme.text
+      );
+
+      document.documentElement.style.setProperty(
+        "--accent",
+        theme.accent
+      );
+
+      document.documentElement.style.setProperty(
+        "--muted",
+        theme.muted
+      );
+
+      document.title = `Archive | ${site.title}`;
+
+      document.getElementById("archiveBrand").textContent =
+        site.title;
+
+      const container =
+        document.getElementById("thoughtsContainer");
+
+      const progressNavigation =
+        document.getElementById("progressNavigation");
+
+      const currentNumber =
+        document.getElementById("currentThoughtNumber");
+
+      const totalNumber =
+        document.getElementById("totalThoughtNumber");
+
+      function formatNumber(number) {
+        return String(number).padStart(2, "0");
+      }
+
+      totalNumber.textContent = formatNumber(thoughts.length);
+
+      function createThoughtSection(item, index) {
+        const section = document.createElement("section");
+
+        section.className = "thought-screen";
+        section.id = `thought-${index + 1}`;
+        section.dataset.index = String(index);
+
+        if (index % 2 !== 0) {
+          section.classList.add("thought-screen-alternate");
+        }
+
+        const inner = document.createElement("div");
+        inner.className = "thought-inner";
+
+        const top = document.createElement("div");
+        top.className = "thought-topline";
+
+        const number = document.createElement("span");
+        number.className = "thought-number";
+        number.textContent = formatNumber(index + 1);
+
+        const type = document.createElement("span");
+        type.className = "thought-type";
+        type.textContent = item.type || "thought";
+
+        top.append(number, type);
+
+        const text = document.createElement("p");
+        text.className = "thought-text";
+        text.textContent =
+          item.text || "Add your thought in config.js.";
+
+        const footer = document.createElement("div");
+        footer.className = "thought-footer";
+
+        const date = document.createElement("span");
+        date.className = "thought-date";
+        date.textContent = item.date || "";
+
+        const scrollHint = document.createElement("span");
+        scrollHint.className = "thought-scroll-hint";
+
+        if (index === thoughts.length - 1) {
+          const returnLink = document.createElement("a");
+
+          returnLink.className = "return-home-link";
+          returnLink.href = "index.html";
+          returnLink.textContent = "Return to the beginning";
+
+          scrollHint.appendChild(returnLink);
+        } else {
+          scrollHint.textContent =
+            index === 0 ? "Scroll to continue" : "";
+        }
+
+        footer.append(date, scrollHint);
+        inner.append(top, text, footer);
+        section.appendChild(inner);
+
+        return section;
+      }
+
+      function createProgressButton(index) {
+        const button = document.createElement("button");
+
+        button.className = "progress-dot";
+        button.type = "button";
+        button.setAttribute(
+          "aria-label",
+          `Go to thought ${index + 1}`
+        );
+
+        button.addEventListener("click", () => {
+          const target =
+            document.getElementById(`thought-${index + 1}`);
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
+
+        return button;
+      }
+
+      thoughts.forEach((item, index) => {
+        container.appendChild(
+          createThoughtSection(item, index)
+        );
+
+        progressNavigation.appendChild(
+          createProgressButton(index)
+        );
+      });
+
+      const sections =
+        Array.from(document.querySelectorAll(".thought-screen"));
+
+      const progressDots =
+        Array.from(document.querySelectorAll(".progress-dot"));
+
+      function setActiveThought(index) {
+        sections.forEach((section, sectionIndex) => {
+          section.classList.toggle(
+            "is-active",
+            sectionIndex === index
+          );
+        });
+
+        progressDots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(
+            "is-active",
+            dotIndex === index
+          );
+
+          dot.setAttribute(
+            "aria-current",
+            dotIndex === index ? "true" : "false"
+          );
+        });
+
+        currentNumber.textContent = formatNumber(index + 1);
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            const index = Number(entry.target.dataset.index);
+            setActiveThought(index);
+          });
+        },
+        {
+          root: container,
+          threshold: 0.6
+        }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      function moveToThought(direction) {
+        const currentIndex = sections.findIndex((section) =>
+          section.classList.contains("is-active")
+        );
+
+        const safeCurrentIndex =
+          currentIndex === -1 ? 0 : currentIndex;
+
+        const nextIndex = Math.min(
+          Math.max(
+            safeCurrentIndex + direction,
+            0
+          ),
+          sections.length - 1
+        );
+
+        sections[nextIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        const downKeys = [
+          "ArrowDown",
+          "PageDown",
+          " "
+        ];
+
+        const upKeys = [
+          "ArrowUp",
+          "PageUp"
+        ];
+
+        if (downKeys.includes(event.key)) {
+          event.preventDefault();
+          moveToThought(1);
+        }
+
+        if (upKeys.includes(event.key)) {
+          event.preventDefault();
+          moveToThought(-1);
+        }
+
+        if (event.key === "Home") {
+          event.preventDefault();
+
+          sections[0].scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+
+        if (event.key === "End") {
+          event.preventDefault();
+
+          sections[sections.length - 1].scrollIntoView({
+            behavior: "smooth"
+          });
+        }
+      });
+
+      setActiveThought(0);
+    })();
+  </script>
+
+</body>
+</html>
