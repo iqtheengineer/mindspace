@@ -1,6 +1,6 @@
 # Mindspace 🧠 
 
-### Build your own corner of the internet.
+### Build your own cozy corner of the internet.
 
 The internet became feeds.
 
