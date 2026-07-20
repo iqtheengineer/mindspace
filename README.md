@@ -113,6 +113,6 @@ No HTML required.
 
 The internet doesn't need another feed.
 
-It needs more places.
+It needs more organic spaces.
 
 Welcome to Mindspace.
